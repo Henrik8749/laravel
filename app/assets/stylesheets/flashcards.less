@@ -1,0 +1,145 @@
+@import 'base.less';
+@import 'quiz.less';
+
+.content-container {
+  min-height: 500px;
+
+  .table-pagination {
+    overflow: hidden;
+    padding: 10px 20px;
+
+    .button-row {
+      margin: 0;
+      float: left;
+    }
+
+    ul.pagination {
+      float: right;
+      margin: 0;
+    }
+  }
+
+  table.table.result {
+    margin-top: 10px;
+    text-align: center;
+
+    thead th, tfoot th {
+      text-align: center;
+
+      a.sortable {
+        text-decoration: none;
+      }
+
+      span.caret {
+        margin: -3px 0 0 5px;
+      }
+    }
+
+    tbody td {
+      vertical-align: middle;
+    }
+
+    tbody td.no_result {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  #flashcardForm {
+    .has-feedback {
+      .form-control-feedback {
+        top: 25px;
+        right: 3px;
+      }
+
+      .form-control-feedback[data-bv-icon-for="front_answers[]"],
+      .form-control-feedback[data-bv-icon-for="back_answers[]"] {
+        right: 34px;
+      }
+
+      .form-control-feedback[data-bv-icon-for="front_answers[]"].bv-no-label,
+      .form-control-feedback[data-bv-icon-for="back_answers[]"].bv-no-label {
+        top: 0;
+      }
+
+      input[name="front_answers[]"],
+      input[name="back_answers[]"] {
+        // margin-right: -37px;
+        padding: 6px 52px 6px 12px;
+        float: left;
+        width: calc(~'100% - 37px');
+      }
+
+      label {
+        display: block;
+      }
+    }
+  }
+
+  #flashcard {
+    display: inline-block;
+    text-align: justify;
+    width: 100%;
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 1000;
+    width: 100%;
+    min-height: 250px;
+    position: relative;
+
+    .back, .front {
+      position: absolute;
+      -webkit-backface-visibility: hidden;
+      -webkit-transition: -webkit-transform 500ms ease-in;
+      width: 100%;
+      height: 100%;
+      padding: 30px 50px;
+      font-family: Helvetica, Arial, sans-serif;
+      color: #fff;
+      box-shadow: inset 0px 0px 20px rgba(0,0,0,0.4);
+      border-radius: 4px;
+      color: #555555;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      display: table;
+      min-height: 200px;
+
+      .text {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+
+    .back {
+        -webkit-transform: rotateX(180deg);
+        overflow: hidden;
+    }
+
+    .btn.prev {
+      position: absolute;
+      top: calc(~'50% - 10px');
+      left: 0
+    }
+    .btn.next {
+      position: absolute;
+      top: calc(~'50% - 10px');
+      right: 0
+    }
+    .btn.flip {
+      position: absolute;
+      bottom: 0;
+      left: calc(~'50% - 34px');
+    }
+  }
+
+  #flashcard.transformed {
+    .back {
+      -webkit-transform: rotateX(0deg);
+    }
+    .front {
+      -webkit-transform: rotateX(-180deg);
+    }
+  }
+}
